@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+ <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+<p id="demo">ffhgfg</p>
+<button onclick="getLocation()">location</button>
+<script>
+
+var x = document.getElementById("demo");
+var lat;
+var log;
+function getLocation() {  if (navigator.geolocation) {    navigator.geolocation.getCurrentPosition(showPosition);  } else {     x.innerHTML = "Geolocation is not supported by this browser.";  }}
+function showPosition(position) { lat= position.coords.latitude; log = position.coords.longitude;
+ x.innerHTML = "Latitude: " + position.coords.latitude +   "<br>Longitude: " + position.coords.longitude + "<br>" +lat + "<br>" +log;}
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyCaGO9wMIotZ5ZUgJTa5RwhwJ1gB98g6fI",
+          authDomain: "project-5676e.firebaseapp.com",
+          databaseURL: "https://project-5676e.firebaseio.com",
+          storageBucket: "project-5676e.appspot.com",
+  };
+  firebase.initializeApp(firebaseConfig);
+ var x = document.getElementById("demo");
+ getLocation();
+function dataSave() {
+  firebase.database().ref("User").set({
+  Latitude:lat,
+  Longitude:"bhhab"
+  });
+}
+</script>
+
+<button onclick="dataSave()">Try It</button>
+
+
+</body>
+</html>
